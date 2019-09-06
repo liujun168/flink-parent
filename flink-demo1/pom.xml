@@ -11,4 +11,16 @@
 
     <artifactId>flink-demo1</artifactId>
 
+    <properties>
+        <oracle.version>11.2.0.1.0</oracle.version>
+    </properties>
+
+    <dependencies>
+        <!-- orcle-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>${oracle.version}</version>
+        </dependency>
+    </dependencies>
 </project>

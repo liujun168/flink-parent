@@ -40,7 +40,6 @@ public class StudyFlinkDemo2 {
 
         // 打印结果
         try {
-//            env.execute("润");
             counts.print();
         } catch (Exception e) {
             e.printStackTrace();
