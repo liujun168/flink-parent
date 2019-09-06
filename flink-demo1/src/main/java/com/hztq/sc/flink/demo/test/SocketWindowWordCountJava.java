@@ -33,6 +33,7 @@ public class SocketWindowWordCountJava {
         DataStream<WordIsCount> windowCounts = text.flatMap(new FlatMapFunction<String, WordIsCount>() {
             @Override
             public void flatMap(String value, Collector<WordIsCount> out) throws Exception {
+                System.out.println(value);
                 String[] words = value.split("\\s");
                 for (String word : words) {
                     out.collect(new WordIsCount(word, 1L));
