@@ -26,13 +26,13 @@ public class ReadFromKafka {
         //直接将从生产者接收到的数据在控制台上进行打印
 //        stream.print();
         //直接将从生产者接收到的数据在控制台上进行打印
-//        stream.map(new MapFunction<String, String>() {
-//            @Override
-//            public String map(String value) throws Exception {
-////                return new Date().toString()+":  "+value;
-//                return "from kafka message"+":  "+value;
-//            }
-//        }).print();
+        stream.map(new MapFunction<String, String>() {
+            @Override
+            public String map(String value) throws Exception {
+//                return new Date().toString()+":  "+value;
+                return "from kafka message"+":  "+value;
+            }
+        }).print();
         env.execute();
 
 
