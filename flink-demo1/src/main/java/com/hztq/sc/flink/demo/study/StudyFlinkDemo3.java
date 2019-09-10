@@ -4,6 +4,7 @@ import com.hztq.sc.flink.demo.db.JDBCUtils;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +24,14 @@ public class StudyFlinkDemo3 {
         List<VisitVO> vos = new ArrayList<>();
         query.forEach(data->{
             VisitVO vo = new VisitVO();
-            vo.setOrgId((Integer) data.get("orgId"));
-            vo.setYear((Integer) data.get("year"));
-            vo.setTotal((Integer) data.get("total"));
-            vo.setVisit((Integer) data.get("visit"));
+            vo.setOrgId((BigDecimal) data.get("orgId"));
+            vo.setYear((BigDecimal) data.get("year"));
+            vo.setTotal((BigDecimal) data.get("total"));
+            vo.setVisit((BigDecimal) data.get("visit"));
             vos.add(vo);
 //            System.out.println(data.get("orgId")+"   "+data.get("year")+"  "+data.get("total")+"  "+data.get("visit"));
         });
+        System.out.println(vos);
 //        DataSet<> dataSet
 //        final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
     }
@@ -38,40 +40,40 @@ public class StudyFlinkDemo3 {
 
 class VisitVO{
 
-    private int orgId;
-    private int year;
-    private int total;
-    private int visit;
+    private BigDecimal orgId;
+    private BigDecimal year;
+    private BigDecimal total;
+    private BigDecimal visit;
 
-    public int getOrgId() {
+    public BigDecimal getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(int orgId) {
+    public void setOrgId(BigDecimal orgId) {
         this.orgId = orgId;
     }
 
-    public int getYear() {
+    public BigDecimal getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(BigDecimal year) {
         this.year = year;
     }
 
-    public int getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
-    public int getVisit() {
+    public BigDecimal getVisit() {
         return visit;
     }
 
-    public void setVisit(int visit) {
+    public void setVisit(BigDecimal visit) {
         this.visit = visit;
     }
 

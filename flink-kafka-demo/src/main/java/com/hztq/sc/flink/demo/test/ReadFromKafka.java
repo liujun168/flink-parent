@@ -18,24 +18,20 @@ public class ReadFromKafka {
         // 构建环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         Properties properties = new Properties();
-        //这里是由一个kafka
-        properties.setProperty("bootstrap.servers", "192.168.1.89:9092");
+        //kafka信息配置
+        properties.setProperty("bootstrap.servers", "localhost:9092");
         properties.setProperty("group.id", "flink_consumer");
         //第一个参数是topic的名称
         DataStream<String> stream=env.addSource(new FlinkKafkaConsumer010("test", new SimpleStringSchema(), properties));
         //直接将从生产者接收到的数据在控制台上进行打印
-//        stream.print();
+        // stream.print();
         //直接将从生产者接收到的数据在控制台上进行打印
         stream.map(new MapFunction<String, String>() {
             @Override
             public String map(String value) throws Exception {
-//                return new Date().toString()+":  "+value;
                 return "from kafka message"+":  "+value;
             }
         }).print();
         env.execute();
-
-
     }
-
 }
